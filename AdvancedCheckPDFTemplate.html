@@ -1,0 +1,566 @@
+<?xml version="1.0"?><!DOCTYPE pdf PUBLIC "-//big.faceless.org//report" "report-1.1.dtd">
+<pdf>
+	<head>
+		<meta charset="UTF-8" />
+  		<title>Sample cheque</title>
+    	<style type="text/css">
+          *
+          {
+            font-family: Helvetica,sans-serif;
+          }
+
+		  td p
+          { align:left }
+
+		</style>
+	</head>
+	<body padding="0.2in 0.2in 0.2in 0.2in" size="letter">
+    	<#list records as check>
+          <!-- This div is the cheque printed in the A4 it has the background of cheque uploaded in the file cabint -->
+          <#if check.currency == "CAN">
+      		<div style="font-family: Helvetica,sans-serif;height:220pt; width:100%; font-size: 8pt; text-align: left;">
+              <table style="height: 50pt;width: 97.5%; padding-top:25%; margin-top:60px; text-align: left;">
+                <tr>
+                  <!-- This cell should call the name of the company from your record for EX. ${check.companyname} -->
+                  <td style="margin-left:5%;">
+                    <h2></h2>
+                  </td>
+
+                  <!-- This cell should call the logo from the file cabint (Documents>Files>File Cabint> folder) -->
+                  <td style="margin-left:0%;">
+
+                  </td>
+
+                  <td></td>
+                  <td></td>
+                  <td></td>
+
+                  <!-- This cell should call the Bank from the record for EX. ${check.account} -->
+                  <td></td>
+
+                  <td></td>
+                  <td></td>
+
+                  <!-- This cell should call the check number from the record for EX. ${check.tranid} -->
+                  <td>
+                    <h4 style="font-style:normal; font-weight: normal;">
+                      <#assign day =  check.trandate?string["dd dd"]>
+                       <#list day?split(".") as x>
+                         <span> ${x?substring(0, 1)} </span>
+                         <span> ${x?substring(1, 2)} </span>
+                       </#list>
+
+                      <#assign mon =  check.trandate?string["MM MM"]>
+                       <#list mon?split(".") as x>
+                         <span> ${x?substring(0, 1)} </span>
+                         <span> ${x?substring(1, 2)} </span>
+                       </#list>
+
+                       <#assign y =  check.trandate?string["y y y y"]>
+                       <#list y?split(".") as x>
+                         <span> ${x?substring(0, 1)} </span>
+                         <span> ${x?substring(1, 2)} </span>
+                         <span> ${x?substring(2, 3)} </span>
+                         <span> ${x?substring(3, 4)} </span>
+                       </#list>
+
+                       <br/>
+                          M M D D Y Y Y Y
+					</h4>
+                   </td>
+                </tr>
+
+                      <tr>
+                  <!-- This cell should call the address of the company from your record for EX. ${check.address} -->
+                  <td style="margin-left:5%; font-style:normal;">
+					
+                  </td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td style=""></td>
+                  <td></td>
+				  <td></td>
+
+                  <!-- This cell should call the date from the record for EX. ${check.trandate} -->
+                  <td style="width:100px;">
+              			<h3 style="font-style:normal; font-weight: normal;">** ${check.usertotal?replace("$", " ")} </h3>
+                  </td>
+                </tr>
+                <tr>
+                  <!-- This cell should call the address of the company from your record for EX. ${check.address} -->
+                  <td style="margin-left:10%; font-style:normal; margin-top:-10px">
+					<h4 style="font-style:normal;">
+                    	******${check.custbody3}
+                    </h4>
+                  </td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td style=""></td>
+                  <td></td>
+				  <td></td>
+
+                  <!-- This cell should call the date from the record for EX. ${check.trandate} -->
+                  <td style="width:100px;">
+                 	
+                  </td>
+                </tr>
+
+                <tr>
+                  <!-- This cell should call the entity from the record for EX. ${check.entity} -->
+                  <td style="margin-left:10%;">
+
+                  </td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+
+                 <td style="width:100px;">
+                 	
+                  </td>
+                </tr>
+
+                <tr>
+                  <td></td>
+                   <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+
+                <tr>
+                  <td style="margin-left:10%; font-style:normal;">
+                    <br/>
+                    <h4 style="font-style:normal;">
+                    	${check.address}
+                    </h4>
+                  </td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>
+
+                  </td>
+                </tr>
+                <tr>
+                  <td  style="margin-left:0px; font-style:normal; font-size:12px;"><br/>Memo</td>
+                  <td  style="margin-left:50px; font-style:normal; text-align: left; font-size:8px;"></td>
+                  <td> </td>
+                  <td> </td>
+                  <td> </td>
+                  <td> </td>
+
+                </tr>
+               </table>
+	</div>
+                <br/>
+    <div style="width: 100%; margin-top:10px;">
+		 <table style="width: 97.5%; font-size: 12px;">
+                <tr>
+                  <!-- This cell should call the name of the company from your record for EX. ${check.companyname} -->
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <!-- This cell should call the check number from the record for EX. ${check.tranid} -->
+                  <td style="margin-left:5%;"></td>
+                </tr>
+
+           		<tr>
+           			<td colspan="3" style="margin-left:5%;  text-align: left; font-size:13px;">${check.entity}</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                   <td style="font-size:13px;">${check.trandate}</td>
+                    <td></td>
+                    <td></td>
+                  	<td></td>
+           		</tr>
+
+           		<tr>
+           			<td colspan="1" style="margin-left:1%;">Date</td>
+                    <td colspan="1">Type</td>
+                    <td colspan="2" style="margin-right:0%;">Reference</td>
+                    <td colspan="2">Orignal Amt.</td>
+                    <td colspan="1">Balance Due</td>
+                    <td colspan="1">Discount</td>
+                  	<td colspan="1" style="text-align: right;">Payment</td>
+           		</tr>
+
+           		<tr>
+           			<td style="margin-left:1%; text-align: left;">${check.trandate}</td>
+                    <td style="text-align: left;">${check.baserecordtype}</td>
+                    <td style="margin-right:0%;">PropTax</td> <!-- ${check.custbody_sii_external_reference} -->
+                    <td></td>
+                    <td></td>
+                    <td>${check.balance?replace("$", "CAD")}</td>
+                    <td>${check.balance?replace("$", "CAD")}</td>
+                    <td></td>
+                  	<td>${check.balance?replace("$", "CAD")}</td>
+           		</tr>
+
+           		<tr>
+           			<td style="margin-left:3%;"> </td>
+                    <td> </td>
+                    <td style="margin-right:0%;"> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td style="text-align: left;">Cheque Amount</td>
+                  	<td>${check.balance?replace("$", "CAD")}</td>
+           		</tr>
+               </table>
+         </div>
+
+        <div style="width: 100%; margin-top:187px; text-align: left;">
+		 <table style="width: 95%; text-align: left; font-size: 12px;">
+
+           		<tr>
+                  <!-- This cell should call the name of the company from your record for EX. ${check.companyname} -->
+                  <td colspan="2" style="margin-left:3%;">Bank CDN</td>
+                  <td colspan="3"></td>
+
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>${check.balance?replace("$", "CAD")}</td>
+                </tr>
+
+           		<tr style="">
+                  <!-- This cell should call the name of the company from your record for EX. ${check.companyname} -->
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <!-- This cell should call the check number from the record for EX. ${check.tranid} -->
+                  <td ></td>
+                </tr>
+
+           		<tr style="margin-top:20px;">
+           			<td colspan="3" style="margin-left:5%;  text-align: left; font-size:13px;">${check.entity}</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  <td style="font-size:13px;">${check.trandate}</td>
+                    <td></td>
+                    <td></td>
+                  	<td></td>
+           		</tr>
+
+           		<tr>
+           			<td colspan="1" style="margin-left:1%;">Date</td>
+                    <td colspan="1">Type</td>
+                    <td colspan="2" style="margin-right:0%;">Reference</td>
+                    <td colspan="2">Orignal Amt.</td>
+                    <td colspan="1">Balance Due</td>
+                    <td colspan="1">Discount</td>
+                  	<td colspan="1" style=" text-align: right;">Payment</td>
+           		</tr>
+
+           		<tr>
+           			<td style="margin-left:1%;">${check.trandate}</td>
+                    <td>${check.baserecordtype}</td>
+                    <td style="margin-right:0%;">PropTax</td> <!-- ${check.custbody_sii_external_reference} -->
+                    <td></td>
+                    <td></td>
+                    <td>${check.balance?replace("$", "CAD")}</td>
+                    <td>${check.balance?replace("$", "CAD")}</td>
+                    <td></td>
+                  	<td>${check.balance?replace("$", "CAD")}</td>
+           		</tr>
+
+           		<tr>
+           			<td style="margin-left:3%;"> </td>
+                    <td> </td>
+                    <td style="margin-right:0%;"> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td style="text-align: left;">Cheque Amount</td>
+                  	<td>${check.balance?replace("$", "CAD")}</td>
+           		</tr>
+               </table>
+         </div>
+          <footer>
+            <table style="width: 100%; margin-top:165vh; font-size: 10px;">
+              	<tr style="width: 95%; ">
+                  <!-- This cell should call tthe name of the company from your record for EX. ${check.companyname} -->
+                  <td style="margin-left:5%;">Bank Account CDN</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td style="margin-left:5%;">${check.balance?replace("$", "CAD")}</td>
+                </tr>
+            </table>
+          </footer>
+
+   <#else>
+   <!-- USA -->
+     <!-- This div is the cheque printed in the A4 it has the background of cheque uploaded in the file cabint -->
+      		<div style="font-family: Helvetica,sans-serif;height:150pt; width:100%; font-size: 8pt;">
+              <table style="height: 50pt;width: 95%; padding-top:25%;">
+                <tr>
+                  <!-- This cell should call the name of the company from your record for EX. ${check.companyname} -->
+                  <td style="margin-left:5%;">
+                    <h2></h2>
+                  </td>
+
+                  <!-- This cell should call the logo from the file cabint (Documents>Files>File Cabint> folder) -->
+                  <td style="margin-left:0%;">
+
+                  </td>
+
+                  <td></td>
+                  <td></td>
+                  <td></td>
+
+                  <!-- This cell should call the Bank from the record for EX. ${check.account} -->
+                  <td></td>
+
+                  <td></td>
+                  <td></td>
+
+                  <!-- This cell should call the check number from the record for EX. ${check.tranid} -->
+                  <td></td>
+                </tr>
+
+                <tr>
+                  <!-- This cell should call the address of the company from your record for EX. ${check.address} -->
+                  <td style="margin-left:5%;">
+
+                  </td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+
+                  <!-- This cell should call the date from the record for EX. ${check.trandate} -->
+                  <td style="margin-left:10%; margin-top:40px; font-style:normal; font-weight: normal;">
+                    <h3 style="font-style:normal; font-weight: normal;">${check.trandate}</h3>
+                  </td>
+                </tr>
+
+                <tr>
+                  <!-- This cell should call the entity from the record for EX. ${check.entity} -->
+                  <td colspan="6" style="margin-left:10%;">
+                    <br/>
+                    <h3 style="text-transform: uppercase; font-style: normal; position: absolute; top: 40%; font-style:normal; font-weight: normal;">
+                      ${check.entity}
+                    </h3>
+                  </td>
+
+                  <td></td>
+                  <td></td>
+
+                  <!-- This cell should call the total from the record for EX. ${check.usertotal} -->
+                  <td >
+                    <br/>
+                    <h3 style="margin-left:10%; font-style:normal; font-weight: normal;">**${check.usertotal?replace("$", "")}</h3>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td colspan="9" style="margin-left:2%; margin-top:-5%;">
+                    <h4 style="font-style:normal; font-weight: normal;">
+                    	${check.custbody3} ****************************************************************************
+                    </h4>
+                  </td>
+                </tr>
+
+                <tr>
+                  <td style="margin-left:8.5%; margin-top:-15px;">
+                    <br/>
+                    <h4 style="text-transform: uppercase; font-style:normal; font-weight: normal;">
+                    	${check.address}
+                    </h4>
+                  </td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                </tr>
+               </table>
+	</div>
+
+    <div style="width: 100%;">
+		 <table style="width: 95%; margin-top:120px; font-size:12px;">
+           		<tr>
+           			<td colspan="6" style="margin-left:5%; text-transform: uppercase; font-size:13px;">${check.entity}</td>
+                    <td></td>
+                    <td>${check.trandate}</td>
+                  	<td></td>
+           		</tr>
+
+           		<tr>
+           			<td style="margin-left:3%;">Date</td>
+                    <td>Type</td>
+                    <td style="margin-right:3%;">Reference</td>
+                    <td></td>
+                    <td></td>
+                    <td>Orignal Amt.</td>
+                    <td>Balance Due</td>
+                    <td>Discount</td>
+                  	<td>Payment</td>
+           		</tr>
+
+           		<tr>
+           			<td style="margin-left:3%;">${check.trandate}</td>
+                    <td>${check.baserecordtype?replace("check", "Cheque")}</td>
+                    <td style="margin-right:3%;">PropTax</td> <!-- ${check.custbody_sii_external_reference} -->
+                    <td></td>
+                    <td></td>
+                    <td>10,625.28</td>
+                    <td>${check.balance?replace("$", "")}</td>
+                    <td></td>
+                  	<td>${check.balance?replace("$", "")}</td>
+           		</tr>
+
+           		<tr>
+           			<td style="margin-left:3%;"> </td>
+                    <td> </td>
+                    <td style="margin-right:3%;"> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td>Cheque Amount</td>
+                  	<td>${check.balance?replace("$", "")}</td>
+           		</tr>
+               </table>
+         </div>
+
+        <div style="width: 100%; margin-top:167px">
+		 <table style="width: 95%; font-size:12px;">
+
+           		<tr>
+                  <!-- This cell should call the name of the company from your record for EX. ${check.companyname} -->
+                  <td style="margin-left:5%;">Account name</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td>${check.balance?replace("$", "")}</td>
+                </tr>
+
+           		<tr style="margin-top:45px;">
+                  <!-- This cell should call the name of the company from your record for EX. ${check.companyname} -->
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <!-- This cell should call the check number from the record for EX. ${check.tranid} -->
+                  <td style="margin-left:5%;"></td>
+                </tr>
+
+           		<tr>
+           			<td colspan="6" style="margin-left:5%; text-transform: uppercase; font-size:13px;">${check.entity}</td>
+                    <td></td>
+                    <td>${check.trandate}</td>
+                  	<td></td>
+           		</tr>
+
+           		<tr>
+           			<td style="margin-left:3%;">Date</td>
+                    <td>Type</td>
+                    <td style="margin-right:3%;">Reference</td>
+                    <td></td>
+                    <td></td>
+                    <td>Orignal Amt.</td>
+                    <td>Balance Due</td>
+                    <td>Discount</td>
+                  	<td>Payment</td>
+           		</tr>
+
+           		<tr>
+           			<td style="margin-left:3%;">${check.trandate}</td>
+                    <td>${check.baserecordtype?replace("check", "Cheque")}</td>
+                    <td style="margin-right:3%;">PropTax</td> <!-- ${check.custbody_sii_external_reference} -->
+                    <td></td>
+                    <td></td>
+                    <td>10,625.28</td>
+                    <td>${check.balance?replace("$", "")}</td>
+                    <td></td>
+                  	<td>${check.balance?replace("$", "")}</td>
+           		</tr>
+
+           		<tr>
+           			<td style="margin-left:3%;"> </td>
+                    <td> </td>
+                    <td style="margin-right:3%;"> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td>Cheque Amount</td>
+                  	<td>${check.balance?replace("$", "")}</td>
+           		</tr>
+               </table>
+         </div>
+          <footer style="width: 100%;">
+            <table style="width: 100%; margin-top:200px; font-size:10px;">
+              	<tr style="width: 90%;">
+                  <!-- This cell should call the name of the company from your record for EX. ${check.companyname} -->
+                  <td style="margin-left:5%;">Account name</td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td></td>
+                  <td style="margin-left:5%;">${check.balance?replace("$", "")}</td>
+                </tr>
+            </table>
+          </footer>
+
+   </#if>
+     
+
+</#list>
+</body>
+</pdf>
